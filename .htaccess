@@ -1,0 +1,23 @@
+# Khusboo Entertainment - Apache Configuration
+DirectoryIndex index.html index.php
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Redirect legacy .php links to clean paths or .html if requested
+  RewriteRule ^about-us/?$ about.html [L,NC]
+  RewriteRule ^services/?$ services.html [L,NC]
+  RewriteRule ^portfolio/?$ portfolio.html [L,NC]
+  RewriteRule ^contact-us/?$ contact.html [L,NC]
+</IfModule>
+
+# Enable Browser Caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+</IfModule>
